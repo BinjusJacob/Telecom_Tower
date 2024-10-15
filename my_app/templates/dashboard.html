@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Tower List{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="text-center">Telecom Tower</h1>
+
+    <div>
+        {% for tower in obj %}
+            <div class="tower">
+                <h3>{{ tower.name }}</h3>
+                <p><strong>Location:</strong> {{ tower.location }}</p>
+                <a href="{% url 'viewdashboard' tower.id %}" class="view-button">View Dashboard</a>
+            </div>
+        {% empty %}
+            <p class="text-center">No towers available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .dashboard-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .tower {
+        padding: 15px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .tower h3 {
+        color: #457b9d;
+    }
+
+    .view-button {
+        display: inline-block;
+        padding: 8px 16px;
+        color: #fff;
+        background-color: #007bff;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
